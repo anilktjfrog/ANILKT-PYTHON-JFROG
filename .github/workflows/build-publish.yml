@@ -27,8 +27,10 @@ jobs:
                 JF_URL: https://${{ vars.JF_URL }}/
                 JF_PROJECT: ${{ vars.JF_PROJECT }}
               with:
-                  oidc-provider-name: ps-jfrog-labs
-                  oidc-audience: ps-jfrog-oidc
+                  JF_URL: https://${{ vars.JF_URL }}/
+                  JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+              #    oidc-provider-name: ps-jfrog-labs
+              #    oidc-audience: ps-jfrog-oidc
 
             - name: Checkout the repository
               uses: actions/checkout@v4
