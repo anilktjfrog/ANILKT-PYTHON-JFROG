@@ -51,13 +51,13 @@ jobs:
 
             - name: build project
               run: |                                   
-                jf pip install -r requirements.txt  --module=jfrog-python-example                
+                jf pip install -r requirements.txt  --module=jfrog-python-example  --build-name python-frogbot --build-number 1            
                 python setup.py sdist bdist_wheel
                 cd dist && echo "hashes=$(sha256sum * | base64 -w0)" >> $GITHUB_OUTPUT
 
             - name: publish python package
               run: |
-                jf rt u dist/ oidctest-pypi/example-projects/ --module=jfrog-python-example
+                jf rt u dist/ oidctest-pypi/example-projects/ --module=jfrog-python-example --build-name python-frogbot --build-number 1
 
       
             - name: Set up QEMU
