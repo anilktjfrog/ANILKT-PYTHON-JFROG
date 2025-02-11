@@ -26,7 +26,8 @@ jobs:
             - name: Setup JFrog CLI
               uses: jfrog/setup-jfrog-cli@v4
               env:
-                JF_URL: https://${{ vars.JF_URL }}/
+                JF_URL: https://${{ vars.JF_URL }}
+                JF_USER: ${{ vars.JF_USER }}
                 JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
 
             - name: Run JFrog CLI Ping
