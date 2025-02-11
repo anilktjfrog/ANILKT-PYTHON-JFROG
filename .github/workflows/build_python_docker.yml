@@ -13,6 +13,7 @@ jobs:
         runs-on: ubuntu-latest              
         env:
           DOCKER_REPO: 'cgx-docker-prod'
+          PYTHON_REPO: 'cgx-python-prod'
           IMAGE_NAME: 'anilkt-python-docker:${{ github.run_number }}'
           JF_URL: https://${{ vars.JF_URL }}/
           DOCKER_CLI_EXPERIMENTAL: enabled
@@ -35,7 +36,7 @@ jobs:
             - name: configure jfrog environment
               run: |
                 # Use a curated repository for python dependencies resolution
-                jf pip-config --repo-resolve=oidctest-pypi
+                jf pip-config --repo-resolve=${{ env.PYTHON_REPO }}
 
             - name: configure python environment
               run: |    
@@ -62,7 +63,7 @@ jobs:
               uses: docker/login-action@v3
               with:
                 registry: ${{ vars.JF_URL }}
-                username: ${{ secrets.JF_USER }}
+                username: ${{ vars.JF_USER }}
                 password: ${{ secrets.JF_PASSWORD }}
 
             - name: Setup buildx instance
@@ -116,7 +117,7 @@ jobs:
             - name: python curation
               run: |
                 rm -f Pipfile 
-                jf pip-config --repo-resolve=oidctest-pypi
+                jf pip-config --repo-resolve=${{ env.DOCKER_REPO }}
                 jf audit || true
                 jf ca || true
                 
