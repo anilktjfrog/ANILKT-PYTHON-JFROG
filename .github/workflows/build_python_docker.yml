@@ -57,7 +57,7 @@ jobs:
 
             - name: publish python package
               run: |
-                jf rt u dist/ oidctest-pypi/example-projects/ --module=jfrog-python-example
+                jf rt u dist/ ${{ env.PYTHON_REPO }}/example-projects/ --module=jfrog-python-example
       
             - name: Set up QEMU
               uses: docker/setup-qemu-action@v3                 
