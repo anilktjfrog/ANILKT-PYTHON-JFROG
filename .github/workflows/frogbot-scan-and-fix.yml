@@ -37,7 +37,10 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install pipenv
-      - uses: jfrog/frogbot@v2
+      - uses: jfrog/frogbot@v2        
+        with:
+          oidc-provider-name: anilkt-github
+          oidc-audience: anilkt-jfrog-oidc
         env:
           # [Mandatory if the two conditions below are met]
           # 1. The project uses npm, yarn 2, NuGet or .NET to download its dependencies
@@ -53,7 +56,7 @@ jobs:
 
           # [Mandatory if JF_USER and JF_PASSWORD are not provided]
           # JFrog access token with 'read' permissions on Xray service
-          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+          #JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
 
           # [Mandatory if JF_ACCESS_TOKEN is not provided]
           # JFrog username with 'read' permissions for Xray. Must be provided with JF_PASSWORD
