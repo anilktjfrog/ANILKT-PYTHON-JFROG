@@ -1,8 +1,6 @@
 name: oidc-poc
-on:
-    push:
-        branches:
-            - 'main'
+on: 
+    workflow_dispatch:
 jobs:
     auth:
         permissions:
