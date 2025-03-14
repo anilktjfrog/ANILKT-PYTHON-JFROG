@@ -22,7 +22,7 @@ permissions:
   id-token: write
 jobs:
   create-fix-repo-push:
-    runs-on: ubuntu-24.04
+    runs-on: centos
     steps:
       - name: Debug OIDC Claims
         uses: github/actions-oidc-debugger@main
