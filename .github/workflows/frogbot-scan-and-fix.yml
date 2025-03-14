@@ -37,7 +37,6 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install pipenv
-      - run: pip install -r requirements.txt
       - uses: jfrog/frogbot@v2        
         with:
           oidc-provider-name: anilkt-github
