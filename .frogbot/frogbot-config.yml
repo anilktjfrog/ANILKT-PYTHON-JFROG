@@ -10,8 +10,8 @@
       branches:
         - main
     scan:
-      includeAllVulnerabilities: true
-      failOnSecurityIssues: false
+      includeAllVulnerabilities: false
+      failOnSecurityIssues: true
       # projects:
       #   - workingDirs:
       #      - python-example/pip-example
